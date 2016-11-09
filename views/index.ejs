@@ -1,0 +1,62 @@
+<html>
+  <head class="container">
+   
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="/javascripts/angular-ui-router.min.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+    <script src="/javascripts/route.js"></script>
+    <script src="/javascripts/auth.js"></script>
+    <script src="/javascripts/tasks.js"></script>
+    
+    <script src="/javascripts/timesheet.js"></script>
+    <script src="/javascripts/team.js"></script>
+    <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="content/css/amelia-bootstrap-theme.min.css" rel="stylesheet" />-->
+    <link href="stylesheets/toaster.css" rel="stylesheet" />
+    <link href="stylesheets/loading-bar.min.css" rel="stylesheet" />
+    <link href="stylesheets/Site.css" rel="stylesheet" />
+  </head>
+  <body ng-app="TimeManagement" >
+        <header  style="margin: 5px" >
+            <div class="navbar navbar-default" id="menu" ng-controller="NavCtrl">
+                <div class="navbar-header">
+                    <button class="btn btn-success navbar-toggle"></button>
+
+                    <div id="logo" width="100%">
+                        <h1  style="color:whitesmoke; margin-left:10px">Time Management</h1>
+
+                        <nav class="nav navbar-nav pull-left" >
+                          <ul class="nav navbar-nav">
+                            <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+                            <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+                            <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+                            <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+                            
+                          </ul>
+                        </nav>
+                      </div>
+                </div>
+                
+                <div class="navbar-collapse collapse"  >
+                <iframe src="http://free.timeanddate.com/clock/i5fnw724/n53/szw110/szh110/hoc000/hbw0/hfc09f/cf100/hnc07c/hwc000/facfff/fdi76/mqcfff/mqs4/mql18/mqw4/mqd60/mhcfff/mhs4/mhl5/mhw4/mhd62/mmv0/hhcfff/hhs1/hhb10/hmcfff/hms1/hmb10/hscfff/hsw3" style="margin-left: 300px;margin-top: 7px "  frameborder="0" width="110" height="110"></iframe>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/home">Tasks</a></li>
+                        <li><a href="#/timesheet">Time Sheet</a></li>
+                        <li><a href="#/performance">Performance</a></li>
+                        <li ng-show="isSupervisor()"><a href="#/team">My Team</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+     <div class="row">
+      <div class="col-md-12" style="margin-left: 10px">
+        <ui-view></ui-view>
+      
+      </div>
+    </div>
+    
+        
+    
+  </body>
+</html>

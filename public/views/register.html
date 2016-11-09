@@ -1,0 +1,44 @@
+<div class="page-header">
+        <h1>Time Management</h1>
+      </div>
+
+      <div ng-show="error" class="alert alert-danger row">
+        <span>{{ error.message }}</span>
+      </div>
+
+      <form ng-submit="register()"
+        style="margin-top:30px;">
+        <h3>Register</h3>
+
+        <div class="form-group">
+        User Name:
+          <input type="text"
+          class="form-control"
+          placeholder="Username"
+          ng-model="user.username"></input>
+        </div>
+        Password:
+        <div class="form-group">
+          <input type="password"
+          class="form-control"
+          placeholder="Password"
+          ng-model="user.password"></input>
+        </div>
+        ID:
+        <div class="form-group">
+          <input type="text"
+          class="form-control"
+          placeholder="ID"
+          ng-model="user.ID"></input>
+        </div>
+
+         Supervisor:
+        <div class="form-group">
+          <input type="text"
+          class="form-control"
+          placeholder="Supervisor"
+          ng-model="user.Supervisor"></input>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>

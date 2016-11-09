@@ -1,0 +1,88 @@
+
+ <table >
+  <tr style="padding-bottom: 20px">
+    <td  style="padding-bottom: 20px;padding-right: 20px">
+    Task Name:
+    </td>
+    <td style="padding-bottom: 20px;padding-right: 20px">
+    <input required="true" type="text" autofocus="true"  ng-model="task.name">{{$scope.name}}
+    </td>
+    <td style="padding-bottom: 20px;padding-right: 20px">
+    Type:
+    </td> 
+    <td style="padding-bottom: 20px;padding-right: 20px">
+    <input required="true" type="text" ng-model="task.type">
+    <!-- <select ng-model="type">
+            <datalist>
+              <option value="Design">Design</option>
+              <option value="Design Test">Design Test</option>
+              <option value="Design Support">Design Support</option>
+              <option value="Design HandoverCoding">Design Handover</option>
+              <option value="Design Review">Design Review</option>
+              <option value="Design Rework">Design Rework</option>
+              <option value="Gap">Gap</option>
+              <option value="Impact">Impact</option>
+              <option value="Coding">Coding</option>
+              <option value="Bug Fixing">Bug Fixing</option>
+              <option value="Testing">Testing</option>
+              <option value="Admin">Admin</option>
+
+          </datalist>
+    </select> -->
+    </td>
+  </tr>
+  <tr style="padding-bottom: 20px;padding-right: 20px">
+    <td style="padding-bottom: 20px;padding-right: 20px">
+      Estimation:
+    </td>
+    <td style="padding-bottom: 20px;padding-right: 20px"> 
+      <input type="text" required="true" value="0" ng-model="task.estimation">
+    </td> 
+    <td style="padding-bottom: 20px;padding-right: 20px">
+      Project:
+    </td>
+    <td style="padding-bottom: 20px;padding-right: 20px"> 
+      <input type="text" required="true" ng-model="task.project">
+      <!-- <select ng-model="project">
+              <datalist>
+                <option value="Ethix-Finance - 2017">Ethix-Finance - 2017</option>
+                <option value="Ethix-Finance - UAT">Ethix-Finance - UAT</option>
+                <option value="Engagment Process">Engagment Process</option>
+                <option value="Admin">Admin</option>
+              </datalist>
+              </select> -->
+    </td>
+    
+  </tr> 
+</table>
+<table class="table-bordered" width="90%">
+<tr>
+    <td width="100px">
+      Start Date
+    </td>
+    <td width="100px">
+      End Date
+    </td>
+  <td width="100px">
+    Effort (h)
+  </td>
+</tr>
+  <tr ng-repeat = "work in task.work">
+    <td>
+    
+      <input type="datetime-local" ng-model-options="{ getterSetter: true }" placeholder="yyyy-MM-ddTHH:mm:ss" ng-model = "work.stDt" >
+    
+  
+    </td>
+    <td>
+    <!-- {{work.endDt}} -->
+      <input type="datetime-local" ng-model = "work.endDt">
+    </td>
+    <td>
+      {{calcEffort(work.stDt,work.endDt)}}  
+    </td>
+  </tr>
+</table>
+<br/>
+<button ng-click="update()" class="btn btn-success ">Save</button>
+<button ng-click="update()" class="btn ">Cancel</button>

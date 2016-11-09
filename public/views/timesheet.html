@@ -1,0 +1,34 @@
+<form  name="myForm">
+<div >
+	Month: <input type="date" ng-model="month" >
+	Period: <input type="number" ng-min="1" ng-max="4" ng-model="period"  required="true">
+	<button ng-disabled="myForm.input.$valid" ng-click="calcTimesheet()">Get Timesheet</button>
+</div><br/>
+<div ng-show="myForm.input.$valid" class="error"> invalid input </div>
+	<table class="table table-bordered " style="width: 98%">
+		<tr>
+		<td>
+			
+		</td>
+		<td ng-repeat = "day in days" class="table-Header">
+			{{day.str}}
+		</td>
+		</tr>
+		<tr ng-repeat="task in tasks">
+			<td class="table-Header" style="width: 450px">
+				<a href="#/task/{{task._id}}" >{{task.name}}</a>
+			</td>
+			<td ng-repeat = "day in days">
+				{{timesheet[$parent.$index][$index]}}
+			</td>
+		</tr>
+		<tr class="bg-success">
+			<td class="table-Header" style="width: 450px">
+				Total
+			</td>
+			<td ng-repeat = "day in days">
+				{{getTotal($index)}}
+			</td>
+		</tr>
+	</table>
+</form>

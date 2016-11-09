@@ -1,0 +1,62 @@
+<form ngsubmit=" addTask(); ">
+        <table >
+          <tr style="padding-bottom: 20px">
+            <td  style="padding-bottom: 20px;padding-right: 20px">
+            Task Name:
+            </td>
+            <td style="padding-bottom: 20px;padding-right: 20px">
+            <input required="true" type="text" autofocus="true"  ng-model="name">{{$scope.name}}
+            </td>
+            <td style="padding-bottom: 20px;padding-right: 20px">
+            Type:
+            </td> 
+            <td style="padding-bottom: 20px;padding-right: 20px">
+            <input required="true" type="text" ng-model="type">
+            </td>
+          </tr>
+          <tr style="padding-bottom: 20px;padding-right: 20px">
+            <td style="padding-bottom: 20px;padding-right: 20px">
+              Estimation:
+            </td>
+            <td style="padding-bottom: 20px;padding-right: 20px"> 
+              <input type="text" required="true" value="0" ng-model="estimation">
+            </td> 
+            <td style="padding-bottom: 20px;padding-right: 20px">
+              Project:
+            </td>
+            <td style="padding-bottom: 20px;padding-right: 20px"> 
+              <input type="text" required="true" ng-model="project">
+            </td>
+            
+          </tr>
+        </table>
+        <button class="btn btn-success" style="align-content:space-around;margin-bottom: 8px" ng-click="addTask()">Add</button>
+      </form>
+      <input type="text" ng-model="task.name" style="margin-bottom: 3px"> 
+      <table class=" table-bordered table-sm" width="98%">
+          <tr class="table-Header">
+              <td width="400px">Name</td>
+              <td width="100px">Type</td>
+              <td width="200px">Project</td>
+              <td width="100px">Start Date</td> 
+              <td width="120px">Estimation(h)</td>
+              <td width="100px">End Date</td> 
+              <td width="120px">Actual Effort(h)</td>
+              
+              <td width="100px">Actions</td">
+          </tr>
+          <tr ng-repeat="task in tasks | orderBy:['endDt','-isworking'] | filter:task" ng-class="{'bg-primary':task.isworking ,'bg-success':task.endDt}">
+              <td>{{task.name}}</td>
+              <td>{{task.type}}</td>
+              <td>{{task.project}}</td ">
+              <td>{{task.startDt | date:'dd/MM/yyyy'}}</td>
+              <td align="center">{{task.estimation}}</td>
+              <td>{{task.endDt | date:'dd/MM/yyyy'}}</td>
+              <td align="center">{{task.actualEffort}}</td>
+              <td >
+                  <button class="btn btn-primary"  style="width: 48%;margin-bottom: 2px" ng-hide="task.isworking" ng-click="start(task)">Start</button>
+                  <button class="btn btn-danger" ng-disabled="task.endDt" style="width: 48%;margin-bottom: 2px" ng-hide="!task.isworking" ng-click="stop(task)">Stop</button>
+                  <button class="btn btn-success" style="width: 48%" ng-click="finish(task)" ng-disabled="task.endDt">Finish</button>         
+              </td>
+          </tr>
+      </table>
