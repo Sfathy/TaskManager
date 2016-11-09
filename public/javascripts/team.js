@@ -28,7 +28,7 @@ app.controller('teamCtrl', [
 
 app.controller('teamDetailsCtrl', [
 '$scope','tasks','auth','$state',
-  function($scope,team,auth,$state){
+  function($scope,tasks,auth,$state){
   	$scope.tasks = tasks.tasks;	
   	$scope.name = 'sherif';
   	$scope.job = 'eng';

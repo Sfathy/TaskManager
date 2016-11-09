@@ -51,12 +51,23 @@ function($stateProvider, $urlRouterProvider) {
         }]
       } 
     })
-    .state('team/{name}',{
-      url: '/team',
-      templateUrl: '/views/teamDetails.html',
-      controller: 'teamDetailsCtrl',
+    .state('teamDetailTimesheet',{
+      url: '/team/{name}/timesheet',
+      templateUrl: '/views/timesheet.html',
+      controller: 'TimesheetCtrl',
         resolve: {
-        teamPromise: ['tasks', '$stateParams',function(teams,$stateParams){
+        teamPromise: ['tasks', '$stateParams',function(tasks,$stateParams){
+
+          return tasks.getTeamTasks($stateParams.name);
+        }]
+      } 
+    })
+    .state('teamDetailTasks',{
+      url: '/team/{name}/tasks',
+      templateUrl: '/views/home.html',
+      controller: 'MainCtrl',
+        resolve: {
+        teamPromise: ['tasks', '$stateParams',function(tasks,$stateParams){
 
           return tasks.getTeamTasks($stateParams.name);
         }]

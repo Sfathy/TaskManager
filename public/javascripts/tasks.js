@@ -3,7 +3,7 @@ app.factory('tasks',['$http','auth',function($http,auth){
     tasks: [],
     task:{}
   };
-  o.getAll = function(user) {
+  o.getAll = function() {
     return $http.get('/tasks/' ,{headers: {Authorization: 'Bearer '+auth.getToken()}}).success(function(data){
       angular.copy(data, o.tasks);
 
@@ -37,7 +37,7 @@ app.factory('tasks',['$http','auth',function($http,auth){
         o.getAll();
       });
   };
-  0.getTeamTasks = function(name){
+  o.getTeamTasks = function(name){
     return $http.get('/tasks/team/' + name ,{headers: {Authorization: 'Bearer '+auth.getToken()}}).success(function(data){
       angular.copy(data, o.tasks);
 

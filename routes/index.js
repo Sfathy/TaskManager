@@ -24,10 +24,10 @@ router.get('/tasks', auth,function(req, res, next) {
 });
 
 router.get('/tasks/team/:name', auth,function(req, res, next) {
-  Task.find({'emp' :  req.params.name},function(err, tasks){
-    //console.log('emp:' + req.payload.username);
-    if(err){ return next(err); }
-
+  Task.find({'emp' :  req.params.name},function(err,tasks){
+    console.log('emp:' + req.params.name);
+   if(err){ return next(err); }
+   console.log("tasks: " + tasks.length);
     res.json(tasks);
   });
 });
